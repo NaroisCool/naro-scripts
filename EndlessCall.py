@@ -21,9 +21,4 @@ def spamTarget(target):
 
 if __name__ == '__main__':
     targets = '16675526551'
-    count = 100
-    while count:
-        count = count - 1
-        print('第%s次spam' % (100-count))
-        spamTarget(targets)
-        time.sleep(65)
+    spamTarget(targets)
