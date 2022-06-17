@@ -20,9 +20,10 @@ def spam_email():
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
     }
     payload = 'email=louyuankun%40126.com'
+    payload2 = 'email=1203141609@qq.com'
     for u in url:
-        res = requests.post(url=u, headers=headers, data=payload).text
-        print(u+":"+res.encode('utf-8').decode('unicode_escape'))
+        res = requests.post(url=u, headers=headers, data=payload).json()
+        print(res)
 
 if __name__ == '__main__':
     spam_email()
