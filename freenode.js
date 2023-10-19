@@ -1,5 +1,5 @@
 /*
-cron: 59 15 7-11/1 * * * sign.js
+cron: 59 15 11 * * *
 clashnode订阅地址自动获取
 */
 const notify = require('./sendNotify')
