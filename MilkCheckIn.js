@@ -1,5 +1,5 @@
 /*
-cron: 59 15 8 * * 1-5
+cron: 59 15 8 * * *
 旗帜奶粉小程序签到
 */
 const notify = require('./sendNotify')
