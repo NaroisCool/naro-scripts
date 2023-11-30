@@ -13,14 +13,16 @@ const header= {
         'Sec-Fetch-Mode': 'navigate',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
-        'Referer': 'https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign&mobile=yes',
+        'Referer': 'https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes',
         'Sec-Fetch-Dest': 'document',
         'Accept-Language': 'zh-CN,zh-Hans;q=0.9'
     }
 
-axios.get('https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign&mobile=yes',{headers:header})
+axios.post('https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes',new URLSearchParams({
+        'formhash': 'a5da46ff'
+    }),{headers:header})
 .then((res) => { 
-      notify.send(res);
+      notify.sendNotify('签到结果',res.data);
 }).catch((error) => {
   console.error(error)
 })
