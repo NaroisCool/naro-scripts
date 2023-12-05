@@ -1,5 +1,5 @@
 /*
-cron: 0 * * *
+cron: 9 * * *
 三国社区签到
 */
 const notify = require('./sendNotify')
