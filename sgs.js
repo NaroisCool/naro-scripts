@@ -5,54 +5,65 @@ cron: 59 15 8 * * *
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
-const header =  {
-        "Host": "preolforum.sanguosha.com",
-        "Connection": "keep-alive",
-        "Authenticate": process.env.sanguosha,
-        "content-type": "application/json",
-        "Accept-Encoding": "gzip,compress,br,deflate",
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.41(0x18002930) NetType/WIFI Language/zh_CN",
-        "Referer": "https://servicewechat.com/wx88a45073e0660980/59/page-frame.html"
 
-    }
 //每日签到
-axios.get('https://preolforum.sanguosha.com//wx/forum/clock?type=1',{headers:header} )
-      .then((res) => {console.log(res)})
-.catch((error) => {
-  console.error(error)
-})
 
-axios.get('https://preolforum.sanguosha.com//v2/forum/list?fid=77&page=1',{headers:header} )
-.then((res) => {
-  //console.log(res.data.data.list)
-  let count = 0;
+// 从环境变量中获取Cookie
+const cookieHeaderValue = process.env.sanguosha;
 
-  for (const item of res.data.data.list) {
-    //console.log(item'isLike'])
-    if (item.isLike === false) {
+// 将Cookie值拆分为单独的Cookie
+const cookies = cookieHeaderValue.split(';');
 
-      //浏览帖子
-      axios.get('https://preolforum.sanguosha.com//wx/first/post?tid='+item.tid,{headers:header} )
-      .then((res) => {
-          console.log(res)
-      }).catch((error) => {
-        console.error(error)
-      })
-      //点赞
-      axios.get('https://preolforum.sanguosha.com//wx/thread/like?tid='+item.tid,{headers:header} )
-      .then((res) => {
-          console.log(res)
-      }).catch((error) => {
-        console.error(error)
-      })
-      count = count+1
+// 遍历每个Cookie值
+cookies.forEach((cookie) => {
+    let header =  {
+            "Host": "preolforum.sanguosha.com",
+            "Connection": "keep-alive",
+            "Authenticate": cookie,
+            "content-type": "application/json",
+            "Accept-Encoding": "gzip,compress,br,deflate",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.41(0x18002930) NetType/WIFI Language/zh_CN",
+            "Referer": "https://servicewechat.com/wx88a45073e0660980/59/page-frame.html"
+
+        }
+    axios.get('https://preolforum.sanguosha.com//wx/forum/clock?type=1',{headers:header} )
+        .then((res) => {console.log(res)})
+    .catch((error) => {
+    console.error(error)
+    })
+
+    axios.get('https://preolforum.sanguosha.com//v2/forum/list?fid=77&page=1',{headers:header} )
+    .then((res) => {
+    //console.log(res.data.data.list)
+    let count = 0;
+
+    for (const item of res.data.data.list) {
+        //console.log(item'isLike'])
+        if (item.isLike === false) {
+
+        //浏览帖子
+        axios.get('https://preolforum.sanguosha.com//wx/first/post?tid='+item.tid,{headers:header} )
+        .then((res) => {
+            console.log(res)
+        }).catch((error) => {
+            console.error(error)
+        })
+        //点赞
+        axios.get('https://preolforum.sanguosha.com//wx/thread/like?tid='+item.tid,{headers:header} )
+        .then((res) => {
+            console.log(res)
+        }).catch((error) => {
+            console.error(error)
+        })
+        count = count+1
+        }
+        //每日五次
+        if (count >= 5) {
+        break;
+        }
     }
-    //每日五次
-    if (count >= 5) {
-      break;
-    }
-  }
-})
-.catch((error) => {
-  console.error(error)
+    })
+    .catch((error) => {
+    console.error(error)
+    })
 })
