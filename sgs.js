@@ -1,12 +1,10 @@
 /*
 cron: 59 15 8 * * *
-三国杀OL小程序-三国桃园刷任务
+三国杀OL小程序-三国桃园签到+刷每日任务
 找到自己的token填到Authenticate即可
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
-
-//每日签到
 
 // 从环境变量中获取Cookie
 const cookieHeaderValue = process.env.sanguosha;
