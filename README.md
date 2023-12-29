@@ -7,4 +7,4 @@
 [联通做任务](https://github.com/NaroisCool/naro-scripts/blob/master/liantong.js)
 
 # ToList
-金色财经获取重要新闻推送
+巨量ip每日签到免费领1000ip
