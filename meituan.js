@@ -6,7 +6,7 @@ cron: 0 0 0,10,15,17,21 * * *
 自动领券和完成一些活动任务
 建议按推荐定时跑, 每天10点15点17点有券可以抽
 默认运行每日赚钱, 抽月符
-默认每日赚钱不随机提现
+默认每日赚钱随机提现
 
 APP每日赚钱: 默认会每日自动随机, 要关闭随机提现的话设置变量 meituanAutoWithdraw 为 false
 不想运行每日赚钱的, 设置变量 meituanMrzqTask 为 false: export meituanMrzqTask="false"
