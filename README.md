@@ -7,4 +7,4 @@
 [联通做任务](https://github.com/NaroisCool/naro-scripts/blob/master/liantong.js)
 [美团外卖](https://github.com/NaroisCool/naro-scripts/blob/master/meituan.js)
 # ToList
-巨量ip每日签到免费领1000ip
+京东读书每日签到和任务奖励
