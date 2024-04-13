@@ -8,7 +8,7 @@ const header= {
         'Host': 'club.sanguosha.com',
         'Sec-Fetch-Site': 'same-origin',
         'Accept-Encoding': 'gzip, deflate, br',
-        'Cookie': 'IwdU_2132_lastact=1701358194%09plugin.php%09; IwdU_2132_st_p=289159%7C1701358173%7C055ada9ed4519c678b55f7b565fdc131; IwdU_2132_viewid=tid_1287953; IwdU_2132_forum_lastvisit=D_60_1701358068; IwdU_2132_st_t=289159%7C1701358068%7C306364b378138d5073d11977e054aef6; IwdU_2132_creditbase=0D892D0D131D0D20D0D0D0; IwdU_2132_creditnotice=0D5D0D0D0D0D0D0D0D289159; IwdU_2132_atarget=1; IwdU_2132_auth=c18bmoSxLuQgk9ilN3ZlhSBMlxDUPU%2B%2Fqb6vZS8PAje1nKPBTJtHPNsHNV1yaKAEZlhbEgZP7FWEBiS4puvocNN3jJA; IwdU_2132_creditrule=%E6%AF%8F%E5%A4%A9%E7%99%BB%E5%BD%95; IwdU_2132_lastcheckfeed=289159%7C1701358055; IwdU_2132_nofavfid=1; IwdU_2132_ulastactivity=1701358055%7C0; IwdU_2132_lastvisit=1701354326; IwdU_2132_saltkey=jZ8dgMM1; acw_tc=0b32821217013578439803420e1c8c95d4e9a4a359f967ed624f9d263b6011; SGS_DEVICEID=WEB-EBBA55B9-A6AF-4700-98DB-1718E74E2F8A; SGS_DEVICEID_SPARE=WEB-EBBA55B9-A6AF-4700-98DB-1718E74E2F8A',
+        'Cookie': 'IwdU_2132_lastact=1713015996%09plugin.php%09; IwdU_2132_mobile=no; IwdU_2132_noticeTitle=1; IwdU_2132_sendmail=1; IwdU_2132_atarget=1; IwdU_2132_forum_lastvisit=D_61_1713015856; IwdU_2132_st_t=289159%7C1713015856%7C5796c1595b853aa2fb63b9228f30a939; IwdU_2132_auth=0107w0ZY%2B%2Fl8IHM7qs5PqiWU5FOZ0dqvEaLSIM2%2BqYyjSbnZ1b4g%2B1itSRuIF94KEK%2F3oKYfV21rF0etaX17Ue3NG7g; IwdU_2132_lastcheckfeed=289159%7C1713015853; IwdU_2132_nofavfid=1; IwdU_2132_ulastactivity=1713015853%7C0; IwdU_2132_lastvisit=1713012246; IwdU_2132_saltkey=dUS80AA8; acw_tc=0b32807617130158468018374e3e0c9607e954935bbdeca12f4175ef3ec282; SGS_DEVICEID=WEB-12255F68-CEC7-4000-9DFF-F4E756C74A66; SGS_DEVICEID_SPARE=WEB-12255F68-CEC7-4000-9DFF-F4E756C74A66; Hm_lvt_741c1946c0ae40c84a3db0b843e0b944=1712107450,1712109092,1712126920,1712882997; Hm_lvt_fb3e47332f1c41f3e8dd1961d001377f=1712107450,1712109092,1712126920,1712882997',
         'Connection': 'keep-alive',
         'Sec-Fetch-Mode': 'navigate',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -18,9 +18,7 @@ const header= {
         'Accept-Language': 'zh-CN,zh-Hans;q=0.9'
     }
 
-axios.post('https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes',new URLSearchParams({
-        'formhash': 'a5da46ff'
-    }),{headers:header})
+axios.get('https://club.sanguosha.com/plugin.php?id=dsu_paulsign:sign',{headers:header})
 .then((res) => { 
       notify.sendNotify('签到结果',res.data);
 }).catch((error) => {
