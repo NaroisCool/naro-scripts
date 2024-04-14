@@ -47,13 +47,33 @@ while True:
                         name = l.get('name')
                         date = l.get('pay_date')
                         pop = str(l.get('collect'))
-                        price = str(l.get('price'))
+                        price = l.get('price')  
+                        olf = open('ol.txt','a')
+                        olf.write('官阶：'+gj+'\n描述：'+name+'\n价格：'+str(price)+'\n成交时间'+date+'\n欢迎度'+pop+'\n')
+                        olf.close()
                         #print('官阶：'+gj+'\n描述：'+name+'\n价格：'+price+'\n成交时间'+date+'\n欢迎度'+pop)
-                        notify.send('爬取结果','官阶：'+gj+'\n描述：'+name+'\n价格：'+price+'\n成交时间'+date+'\n欢迎度'+pop)
+                        if price >= 900:
+                            notify.send('爬取结果','官阶：'+gj+'\n描述：'+name+'\n价格：'+str(price)+'\n成交时间'+date+'\n欢迎度'+pop+'\n\n')
                         ol = ol +1
                     if '十周年' in l.get('category')[0].get('value'):
+                        gj = l.get('category')[3].get('value')
+                        name = l.get('name')
+                        date = l.get('pay_date')
+                        pop = str(l.get('collect'))
+                        price = l.get('price')
+                        tf = open('ten.txt','a')
+                        tf.write('官阶：'+gj+'\n描述：'+name+'\n价格：'+str(price)+'\n成交时间'+date+'\n欢迎度'+pop+'\n\n')
+                        tf.close()
                         ten = ten +1
                     if '移动' in l.get('category')[0].get('value'):
+                        gj = l.get('category')[3].get('value')
+                        name = l.get('name')
+                        date = l.get('pay_date')
+                        pop = str(l.get('collect'))
+                        price = l.get('price')
+                        mf = open('mobile.txt','a')
+                        mf.write('官阶：'+gj+'\n描述：'+name+'\n价格：'+str(price)+'\n成交时间'+date+'\n欢迎度'+pop+'\n\n')
+                        mf.close()
                         mobile = mobile +1
                 except:
                     print('出错')
