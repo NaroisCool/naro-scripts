@@ -1,8 +1,45 @@
 /*
 cron: 59 15 8 * * *
 云闪付签到
-创建变量名YSF_TOKEN并把抓包里的Authorization参数填入
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
-const _0x33a0=['360900','post','youhui.95516.com','env','YSF','云闪付签到结果','data','same-origin','signedIn','zh-CN,zh-Hans;q=0.9','log','catch'];const _0x5d16=function(_0x33a00a,_0x5d16b0){_0x33a00a=_0x33a00a-0x0;let _0x125639=_0x33a0[_0x33a00a];return _0x125639;};const header={'Host':_0x5d16('0x2'),'Accept':'application/json,\x20text/plain,\x20/','Authorization':process[_0x5d16('0x3')]['YSF_TOKEN'],'Sec-Fetch-Site':_0x5d16('0x7'),'Accept-Language':_0x5d16('0x9'),'x-city':_0x5d16('0x0'),'Sec-Fetch-Mode':'cors','Accept-Encoding':'gzip,\x20deflate,\x20br','Origin':'https://youhui.95516.com','Content-Length':'2','User-Agent':'Mozilla/5.0\x20(iPhone;\x20CPU\x20iPhone\x20OS\x2016_6\x20like\x20Mac\x20OS\x20X)\x20AppleWebKit/605.1.15\x20(KHTML,\x20like\x20Gecko)\x20Mobile/15E148/sa-sdk-ios\x20(com.unionpay.chsp)\x20(cordova\x204.5.4)\x20(updebug\x200)\x20(version\x20938)\x20(UnionPay/1.0\x20CloudPay)\x20(clientVersion\x20198)\x20(language\x20zh_CN)\x20(upHtml)\x20(walletMode\x2000)','Referer':'https://youhui.95516.com/newsign/public/app/index.html','Connection':'keep-alive','Content-Type':'application/json','Sec-Fetch-Dest':'empty','Cookie':process[_0x5d16('0x3')][_0x5d16('0x4')]};const payload={};axios[_0x5d16('0x1')]('https://youhui.95516.com/newsign/api/daily_sign_in',payload,{'headers':header})['then'](_0xc6017a=>{notify['sendNotify'](_0x5d16('0x5'),_0xc6017a['data'][_0x5d16('0x8')]+_0xc6017a[_0x5d16('0x6')]['days']);console[_0x5d16('0xa')](_0xc6017a['data']);})[_0x5d16('0xb')](_0xba1c44=>{console['error'](_0xba1c44);});
+
+
+function version(){
+    return new Promise(function(resolve,reject){
+    resolve(axios.get("https://gitee.com/naro_li/statement/raw/main/naro-scripts"))})
+}
+
+async function main(){
+    await version().then(data=>{console.log(data.data)})
+    const header =  {
+            "Host": "youhui.95516.com",
+            "Accept": "application/json, text/plain, /",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJQVlZKUkoxRzYiLCJ0IjoiMDIxNzI1MzIiLCJpYXQiOjE2OTY2NDA0NzAsImV4cCI6MTk1NTg0MDQ3MH0.AJaDlMGyJsuaQcbE-W6tAd-LCZ_zBCPPg7M0iODu8ls",
+            "Sec-Fetch-Site": "same-origin",
+            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+            "x-city": "360900",
+            "Sec-Fetch-Mode": "cors",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Origin": "https://youhui.95516.com",
+            "Content-Length": "2",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/sa-sdk-ios (com.unionpay.chsp) (cordova 4.5.4) (updebug 0) (version 938) (UnionPay/1.0 CloudPay) (clientVersion 198) (language zh_CN) (upHtml) (walletMode 00)",
+            "Referer": "https://youhui.95516.com/newsign/public/app/index.html",
+            "Connection": "keep-alive",
+            "Content-Type": "application/json",
+            "Sec-Fetch-Dest": "empty",
+            "Cookie": process.env.YSF
+    
+        }
+    const payload = {}
+    axios.post('https://youhui.95516.com/newsign/api/daily_sign_in',payload,{headers:header} )
+    .then((res) => {
+      notify.sendNotify('云闪付签到结果',res.data.signedIn+res.data.days)
+      console.log(res.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
+main()
