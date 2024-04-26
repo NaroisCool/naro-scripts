@@ -27,9 +27,7 @@ axios.post(
       'Referer': 'https://ctwx.sgmlink.com/portal/',
       'Content-Length': '2',
       'Connection': 'keep-alive',
-      'Sec-Fetch-Dest': 'empty',
-      'Cookie': 'SERVERCORSID=9471b821c927b7feb5455296fdefd3e0|1714113072|1714113071; SERVERID=9471b821c927b7feb5455296fdefd3e0|1714113072|1714113071; dcpDID=1714113072886_de7f5e34836c1; acw_tc=707c9fca17141130719525691e1598db722f88db6942339d6a7bbc6c462685'
-    }
+      'Sec-Fetch-Dest': 'empty'}
   }
 ).then((res) => {console.log(res);notify.sendNotify('签到结果：',JSON.stringify(res.data))})
     .catch((error) => {
