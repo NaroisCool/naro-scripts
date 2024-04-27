@@ -21,6 +21,7 @@ function version(){
 
 async function main(){
         await version().then(data=>{console.log(data.data)})
+        let msgStr = ''
         // 遍历每个Cookie值
         for(cookie of cookies){
             let header =  {
@@ -36,13 +37,13 @@ async function main(){
 
             
             await axios.get('https://preolforum.sanguosha.com//wx/user/info',{headers:header} )
-                .then((res) => {console.log('账号：'+res.data.data.name+'...')})
+                .then((res) => {msgStr +='账号：'+res.data.data.name+'...\n'})
             .catch((error) => {
                 console.error(error)
             })
 
             axios.get('https://preolforum.sanguosha.com//wx/forum/clock?type=1',{headers:header} )
-                .then((res) => {console.log(res.data.msg)})
+                .then((res) => {msgStr += res.data.msg+'\n'})
             .catch((error) => {
             console.error(error.response.data)
             })
@@ -59,14 +60,14 @@ async function main(){
                 //浏览帖子
                 axios.get('https://preolforum.sanguosha.com//wx/first/post?tid='+item.tid,{headers:header} )
                 .then((res) => {
-                    console.log('浏览帖子任务'+res.data.msg)
+                    msgStr +='浏览帖子任务'+res.data.msg+'\n'
                 }).catch((error) => {
                     console.error(cookie+error.response.data)
                 })
                 //点赞
                 axios.get('https://preolforum.sanguosha.com//wx/thread/like?tid='+item.tid,{headers:header} )
                 .then((res) => {
-                    console.log('点赞任务'+res.data.msg)
+                    msgStr +='点赞任务'+res.data.msg+'\n'
                 }).catch((error) => {
                     console.error(cookie+error.response.data)
                 })
@@ -82,5 +83,6 @@ async function main(){
             console.error(error.response.data)
             })
         }
+        notify.sendNotify('三国桃园',msgStr)
 }
 main()
