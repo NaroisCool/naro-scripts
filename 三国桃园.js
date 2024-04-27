@@ -20,9 +20,9 @@ function version(){
 }
 
 async function main(){
-
+        await version().then(data=>{console.log(data.data)})
         // 遍历每个Cookie值
-        cookies.forEach((cookie) => {
+        for(cookie of cookies){
             let header =  {
                     "Host": "preolforum.sanguosha.com",
                     "Connection": "keep-alive",
@@ -33,10 +33,18 @@ async function main(){
                     "Referer": "https://servicewechat.com/wx88a45073e0660980/59/page-frame.html"
         
                 }
-            axios.get('https://preolforum.sanguosha.com//wx/forum/clock?type=1',{headers:header} )
-                .then((res) => {console.log(res)})
+
+            
+            await axios.get('https://preolforum.sanguosha.com//wx/user/info',{headers:header} )
+                .then((res) => {console.log('账号：'+res.data.data.name+'...')})
             .catch((error) => {
-            console.error(error)
+                console.error(error)
+            })
+
+            axios.get('https://preolforum.sanguosha.com//wx/forum/clock?type=1',{headers:header} )
+                .then((res) => {console.log(res.data.msg)})
+            .catch((error) => {
+            console.error(error.response.data)
             })
         
             axios.get('https://preolforum.sanguosha.com//v2/forum/list?fid=77&page=1',{headers:header} )
@@ -51,16 +59,16 @@ async function main(){
                 //浏览帖子
                 axios.get('https://preolforum.sanguosha.com//wx/first/post?tid='+item.tid,{headers:header} )
                 .then((res) => {
-                    console.log(res)
+                    console.log('浏览帖子任务'+res.data.msg)
                 }).catch((error) => {
-                    console.error(error)
+                    console.error(cookie+error.response.data)
                 })
                 //点赞
                 axios.get('https://preolforum.sanguosha.com//wx/thread/like?tid='+item.tid,{headers:header} )
                 .then((res) => {
-                    console.log(res)
+                    console.log('点赞任务'+res.data.msg)
                 }).catch((error) => {
-                    console.error(error)
+                    console.error(cookie+error.response.data)
                 })
                 count = count+1
                 }
@@ -71,8 +79,8 @@ async function main(){
             }
             })
             .catch((error) => {
-            console.error(error)
+            console.error(error.response.data)
             })
-        })
+        }
 }
 main()
