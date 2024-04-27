@@ -1,7 +1,7 @@
 /*
 cron: 59 15 8 * * *
 三国杀OL小程序-三国桃园刷任务
-找到自己的token填到Authenticate即可
+抓包找到自己的Authenticate填到sanguosha变量，多个账号用;隔开
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
