@@ -6,12 +6,12 @@ cron: 59 15 8 * * *
 const axios = require('axios')
 const notify = require('./sendNotify')
 function version(){
-    return new Promise(function(resolve,reject){
-    resolve(axios.get("https://gitee.com/naro_li/statement/raw/main/naro-scripts"))})
+	return new Promise(function(resolve,reject){
+	resolve(axios.get("https://gitee.com/naro_li/statement/raw/main/naro-scripts"))})
 }
 
 async function main(){
-    await version().then(data=>{console.log(data.data)})
+    	await version().then(data=>{console.log(data.data)})
 	const header =  {
 		"appid": "1105200115",
 		"openid": "A83B54FFF9932164D7E39DB3B88D7087",
