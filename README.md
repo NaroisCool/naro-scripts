@@ -1,3 +1,11 @@
+<div align="center"> 
+<h1 align="center">Naro脚本</h1>
+ 
+[![GitHub stars](https://img.shields.io/github/stars/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts)
+[![GitHub forks](https://img.shields.io/github/forks/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts/network)
+[![GitHub issues](https://img.shields.io/github/issues/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts/issues)
+![GitHub issues](https://img.shields.io/github/languages/code-size/wenmoux/checkbox?style=flat-square)
+</div>  
 # 目前
 [云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/ysf.js)
 [王者营地签到](https://github.com/NaroisCool/naro-scripts/blob/master/wzyd.js)
