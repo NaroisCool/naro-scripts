@@ -4,15 +4,21 @@
 [![GitHub stars](https://img.shields.io/github/stars/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts)
 [![GitHub forks](https://img.shields.io/github/forks/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts/network)
 [![GitHub issues](https://img.shields.io/github/issues/NaroisCool/naro-scripts?style=flat-square)](https://github.com/NaroisCool/naro-scripts/issues)
-![GitHub issues](https://img.shields.io/github/languages/code-size/wenmoux/checkbox?style=flat-square)
+![GitHub issues](https://img.shields.io/github/languages/code-size/NaroisCool/naro-scripts?style=flat-square)
 </div>  
-# 目前
-[云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/ysf.js)
-[王者营地签到](https://github.com/NaroisCool/naro-scripts/blob/master/wzyd.js)
-[红旗奶粉签到](https://github.com/NaroisCool/naro-scripts/blob/master/MilkCheckIn.js)
-[三国杀桃园每日任务](https://github.com/NaroisCool/naro-scripts/blob/master/sgs.js)
-[免费节点更新](https://github.com/NaroisCool/naro-scripts/blob/master/freenode.js)
-[联通做任务](https://github.com/NaroisCool/naro-scripts/blob/master/liantong.js)
-[美团外卖](https://github.com/NaroisCool/naro-scripts/blob/master/meituan.js)
-# ToList
-京东读书每日签到和任务奖励
+
+# 简介
+qq交流群：640169839
+
+# 快捷导航
+[云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/云闪付.js)
+[王者营地签到](https://github.com/NaroisCool/naro-scripts/blob/master/王者营地.js)
+~~[红旗奶粉签到](https://github.com/NaroisCool/naro-scripts/blob/master/MilkCheckIn.js)~~
+[三国杀桃园每日任务](https://github.com/NaroisCool/naro-scripts/blob/master/三国桃园.js)
+~~[免费节点更新](https://github.com/NaroisCool/naro-scripts/blob/master/freenode.js)~~
+~~[美团外卖](https://github.com/NaroisCool/naro-scripts/blob/master/meituan.js)~~
+[螃蟹租号顶一顶](https://github.com/NaroisCool/naro-scripts/blob/master/%E8%9E%83%E8%9F%B9%E7%A7%9F%E5%8F%B7%E9%A1%B6%E4%B8%80%E9%A1%B6.js)
+
+
+# 免责申明
+该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
