@@ -1,5 +1,5 @@
 /*
-cron: 9 * * *
+cron: 0 0 9 * * *
 京东读书签到
 */
 const notify = require('./sendNotify')
