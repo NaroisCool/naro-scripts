@@ -9,13 +9,13 @@ function version() {
         resolve(axios.get("https://gitee.com/naro_li/statement/raw/main/naro-scripts"))
     })
 }
-
+const formattedDate = new Date().toISOString().slice(0, 10);
 async function main() {
     await version().then(data => { console.log(data.data) })
     axios.post(
         'https://jdread-api.jd.com/jdread/api/activity/sign',
         {
-            'effective_date': '2024-06-09',
+            'effective_date': formattedDate,
             'sign_type': 0
         },
         {
