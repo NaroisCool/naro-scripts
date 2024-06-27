@@ -1,7 +1,9 @@
 /*
 cron: 59 15 8 * * *
 王者营地每日签到
-自己抓包找到msdkEncodeParam参数并设置到变量WZYD_TOKEN里
+自己抓包找到如下参数并设置到变量WZYD_TOKEN和WZYY_BODY里,多个账号用分号隔开
+{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"};{"appid": "","openid": "","msdkEncodeParam": "","sig": "","userId": "","source": "","encode": 2,"timestamp": "","algorithm": "v2","version": "3.1.96i"}
+{"cSystem":"ios","h5Get":1,"roleId":"1685189495"};{"cSystem":"ios","h5Get":1,"roleId":"520128481"}
 */
 const axios = require('axios')
 const notify = require('./sendNotify')
@@ -12,35 +14,24 @@ function version(){
 
 async function main(){
     	await version().then(data=>{console.log(data.data)})
-	const header =  {
-		"appid": "1105200115",
-		"openid": "A83B54FFF9932164D7E39DB3B88D7087",
-		"msdkEncodeParam": process.env.WZYD_TOKEN,
-		"sig": "eb4fa36c0605e1c177f22d07a63ba780",
-		"userId": "407825320",
-		"roleId": "634229831",
-		"gameId": "20001",
-		"gameOpenid": "54BB3BCAA8E14D025D8CBA0C37230351",
-		"msdkToken": "pudhlNwI",
-		"source": "smoba_zhushou",
-		"Origin": "https://camp.qq.com",
-		"encode": 2,
-		"noencrypt": 1,
-		"timestamp": "1665531674282",
-		"cClientVersionName": "6.74.401",
-		"algorithm": "v2",
-		"version": "3.1.96i"
-	    }
-	const payload = {"cSystem":"ios","h5Get":1,"roleId":"1685189495"}
-	
-	axios.post('https://kohcamp.qq.com/operation/action/signin',payload,{headers:header} )
-	.then((res) => {
-	  notify.sendNotify('王者营地签到结果',JSON.stringify(res.data))
-	  console.log(`statusCode: ${res.data.returnMsg}`)
-	  console.log(res)
-	})
-	.catch((error) => {
-	  console.error(error)
-	})
+		// 从环境变量中获取Cookie
+		const cookieHeaderValue = process.env.WZYD_TOKEN;
+        const bodyValue = process.env.WZYD_BODY;
+		// 将Cookie值拆分为单独的Cookie
+		const cookies = cookieHeaderValue.split(';');
+        const body = bodyValue.split(';');
+        let count = 0 
+		for (cookie of cookies){
+			const header = JSON.parse(cookie)
+            const payload = JSON.parse(body[count])
+            axios.post('https://kohcamp.qq.com/operation/action/signin',payload,{headers:header} )
+            .then((res) => {
+                notify.sendNotify(payload.roleId+'的王者营地签到结果',JSON.stringify(res.data))
+            }).catch((error) => {
+                console.error(error)
+            })
+                count = count +1
+            }
+			
 }
 main()
