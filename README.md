@@ -9,6 +9,7 @@
 
 # 简介
 qq交流群：640169839
+[科学上网机场推荐](https://bbxy.buzz/auth/register?code=G9we)
 
 # 快捷导航
 [云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/云闪付.js)
