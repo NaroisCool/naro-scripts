@@ -10,8 +10,6 @@
 # 简介
 qq交流群：640169839
 
-[科学上网机场推荐](https://bbxy.buzz/auth/register?code=G9we)
-
 # 快捷导航
 [云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/云闪付.js)
 [王者营地签到](https://github.com/NaroisCool/naro-scripts/blob/master/王者营地.js)
@@ -21,6 +19,9 @@ qq交流群：640169839
 ~~[美团外卖](https://github.com/NaroisCool/naro-scripts/blob/master/meituan.js)~~
 [螃蟹租号顶一顶](https://github.com/NaroisCool/naro-scripts/blob/master/%E8%9E%83%E8%9F%B9%E7%A7%9F%E5%8F%B7%E9%A1%B6%E4%B8%80%E9%A1%B6.js)
 
+# 薅羊毛
+
+[性价比超高的科学上网机场](https://bbxy.buzz/auth/register?code=G9we)
 
 # 免责申明
 该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
