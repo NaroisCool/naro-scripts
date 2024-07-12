@@ -7,7 +7,7 @@
 ![GitHub issues](https://img.shields.io/github/languages/code-size/NaroisCool/naro-scripts?style=flat-square)
 </div>  
 <div align="center">
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2F{NaroisCool}%2F{naro-scripts}&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false" />
+  <img src="https://img.shields.io/github/visitors/{NaroisCool}/{naro-scripts}?logo=github&style=for-the-badge" alt="GitHub Visitors" />
 </div>
 # 简介
 qq交流群：640169839
