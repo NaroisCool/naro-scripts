@@ -1,6 +1,8 @@
 /*
 cron: 59 15 8 * * *
 云闪付签到
+说明：抓包域名https://youhui.95516.com/newsign/api/daily_sign_in
+参数Authorization和Cookie分别对应变量名YSF_TOKEN和YSF_COOKIE
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
@@ -16,7 +18,7 @@ async function main(){
     const header =  {
             "Host": "youhui.95516.com",
             "Accept": "application/json, text/plain, /",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJQVlZKUkoxRzYiLCJ0IjoiMDIxNzI1MzIiLCJpYXQiOjE2OTY2NDA0NzAsImV4cCI6MTk1NTg0MDQ3MH0.AJaDlMGyJsuaQcbE-W6tAd-LCZ_zBCPPg7M0iODu8ls",
+            "Authorization": process.env.YSF_TOKEN,
             "Sec-Fetch-Site": "same-origin",
             "Accept-Language": "zh-CN,zh-Hans;q=0.9",
             "x-city": "360900",
@@ -29,7 +31,7 @@ async function main(){
             "Connection": "keep-alive",
             "Content-Type": "application/json",
             "Sec-Fetch-Dest": "empty",
-            "Cookie": process.env.YSF
+            "Cookie": process.env.YSF_COOKIE
     
         }
     const payload = {}
