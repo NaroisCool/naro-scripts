@@ -20,7 +20,6 @@ qq交流群：640169839
 [螃蟹租号顶一顶](https://github.com/NaroisCool/naro-scripts/blob/master/%E8%9E%83%E8%9F%B9%E7%A7%9F%E5%8F%B7%E9%A1%B6%E4%B8%80%E9%A1%B6.js)
 
 # 预告(挖坑)
-宜春潮app签到+积分
 
 # 薅羊毛
 
