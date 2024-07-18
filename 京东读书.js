@@ -54,7 +54,7 @@ async function main() {
         }
     ).then((res) => {
         console.log(res.data)
-        notify.sendNotify('签到结果', JSON.stringify(res.data));
+        notify.sendNotify('京东读书签到结果', JSON.stringify(res.data));
     }).catch((error) => {
         console.error(error)
     })
