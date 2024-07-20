@@ -199,6 +199,6 @@ def run(jiekou_list):
 
 
 if __name__ == '__main__':
-    phone = "17503061119"
+    phone = ""
     target_list = replacePhone(phone)
     run(target_list)
