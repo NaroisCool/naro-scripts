@@ -18,6 +18,7 @@ qq交流群：640169839
 ~~[免费节点更新](https://github.com/NaroisCool/naro-scripts/blob/master/freenode.js)~~
 ~~[美团外卖](https://github.com/NaroisCool/naro-scripts/blob/master/meituan.js)~~
 [螃蟹租号顶一顶](https://github.com/NaroisCool/naro-scripts/blob/master/%E8%9E%83%E8%9F%B9%E7%A7%9F%E5%8F%B7%E9%A1%B6%E4%B8%80%E9%A1%B6.js)
+[机场签到](https://github.com/NaroisCool/naro-scripts/blob/master/%E6%9C%BA%E5%9C%BA%E7%AD%BE%E5%88%B0.py)
 
 # 预告(挖坑)
 
