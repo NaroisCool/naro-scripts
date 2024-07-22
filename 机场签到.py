@@ -75,28 +75,32 @@ class BBXYSign:
     """
 
     def sign(self):
-        client = self.session.post(url=self.originUrl + "user/checkin", params=self.params, headers=self.headers)
-        print(client.text)
-        response = json.loads(client.text)
-        if response['ret'] != 1:
-            print(f"签到失败了，原因是{response['msg']}")
-            notify.send('BBXY签到结果！',response['msg'])
-            return False
-        self.signSuccessMsg = response
-        self.signSuccessOrNot = True
-        msg = (f"签到成功\n"
-                   f"今日已用{self.signSuccessMsg['trafficInfo'].get('todayUsedTraffic')}\n"
-                   f"总共已用{self.signSuccessMsg['trafficInfo'].get('lastUsedTraffic')}\n"
-                   f"剩余流量{self.signSuccessMsg['trafficInfo'].get('unUsedTraffic')}\n")
-        if self.signSuccessOrNot:
-            notify.send('BBXY签到结果！',msg)
-            print("微信公众号消息已发送")
+        try:
+            client = self.session.post(url=self.originUrl + "user/checkin", params=self.params, headers=self.headers)
+            print(client.text)
+            response = json.loads(client.text)
+            if response['ret'] != 1:
+                print(f"签到失败了，原因是{response['msg']}")
+                notify.send('BBXY签到结果：',response['msg'])
+                return False
+            self.signSuccessMsg = response
+            self.signSuccessOrNot = True
+            msg = (f"签到成功\n"
+                       f"今日已用{self.signSuccessMsg['trafficInfo'].get('todayUsedTraffic')}\n"
+                       f"总共已用{self.signSuccessMsg['trafficInfo'].get('lastUsedTraffic')}\n"
+                       f"剩余流量{self.signSuccessMsg['trafficInfo'].get('unUsedTraffic')}\n")
+            if self.signSuccessOrNot:
+                notify.send('BBXY签到结果！',msg)
+                print("微信公众号消息已发送")
+                return True
+            else:
+                notify.send('BBXY签到结果！',msg)
+                print("微信公众号消息已发送")
+                return False
             return True
-        else:
-            notify.send('BBXY签到结果！',msg)
-            print("微信公众号消息已发送")
+        except Exception as e:
+            print(e)
             return False
-        return True
     
     """
     消息模板，顺便发送消息到微信公众号
