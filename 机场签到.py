@@ -8,7 +8,8 @@ import notify
 
 """
     百变小樱机场自动签到领流量
-    推荐机场注册地址☞ https://bbxy.life/auth/register?code=G9we
+    机场注册地址☞ https://bbxy.life/auth/register?code=G9we
+    脚本执行要求填入变量BBXY_EMAIL（邮箱账号）和BBXY_PASSWORD（登录密码）
     感谢原作者Admsec，
     经NaroisCool改进，将从百变小樱官方永久地址发布网站（http://bbxy88.com/）上爬取最新的国内访问地址，以及其他方法内的逻辑改动。
 """
@@ -22,8 +23,8 @@ class BBXYSign:
         self.session = httpx.Client()
         self.originUrl = ""
         self.loginUrl = ""
-        self.email = os.environ.get("email")
-        self.password = os.environ.get("password")
+        self.email = os.environ.get("BBXY_EMAIL")
+        self.password = os.environ.get("BBXY_PASSWORD")
         self.plusplusToken = os.environ.get("token")
         self.params = {"email": self.email, "passwd": self.password, "remember-me": '0'}
         self.signSuccessOrNot = False
@@ -113,6 +114,13 @@ if __name__ == '__main__':
     主程序
     从http://bbxy88.com/上爬取最新国内的入口地址
     """
+    print("*****\n"
+    "百变小樱机场自动签到领流量\n"
+    "机场注册地址☞ https://bbxy.life/auth/register?code=G9we\n"
+    "脚本执行要求填入变量BBXY_EMAIL（邮箱账号）和BBXY_PASSWORD（登录密码）\n"
+    "感谢原作者Admsec，\n"
+    "经NaroisCool改进，将从百变小樱官方永久地址发布网站（http://bbxy88.com/）上爬取最新的国内访问地址，以及其他方法内的逻辑改动。\n"
+    "*****")
     url = 'http://bbxy88.com/'
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
