@@ -25,7 +25,6 @@ class BBXYSign:
         self.loginUrl = ""
         self.email = os.environ.get("BBXY_EMAIL")
         self.password = os.environ.get("BBXY_PASSWORD")
-        self.plusplusToken = os.environ.get("token")
         self.params = {"email": self.email, "passwd": self.password, "remember-me": '0'}
         self.signSuccessOrNot = False
         self.signSuccessMsg = ""
