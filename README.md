@@ -26,7 +26,7 @@ TG交流群: https://t.me/naro_scripts
 
 # 薅羊毛
 
-[性价比超高的科学上网机场](https://bbxy.buzz/auth/register?code=G9we)
+[高性价比机场](https://bbxy.buzz/auth/register?code=G9we)
 
 # 免责申明
 该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
