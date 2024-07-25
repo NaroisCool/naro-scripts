@@ -8,7 +8,7 @@ import notify
 
 """
     百变小樱机场自动签到领流量
-    机场注册地址☞ https://bbxy.life/auth/register?code=G9we
+    机场注册地址☞ https://dash.bbxy.buzz/auth/register?code=G9we
     脚本执行要求安装python依赖bs4和httpx;填入变量BBXY_EMAIL（邮箱账号）和BBXY_PASSWORD（登录密码）
     感谢原作者Admsec，
     经NaroisCool改进，将从百变小樱官方永久地址发布网站（http://bbxy88.com/）上爬取最新的国内访问地址，以及其他方法内的逻辑改动。
