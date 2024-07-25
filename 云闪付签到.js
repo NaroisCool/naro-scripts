@@ -37,8 +37,9 @@ async function main(){
     const payload = {}
     axios.post('https://youhui.95516.com/newsign/api/daily_sign_in',payload,{headers:header} )
     .then((res) => {
-      notify.sendNotify('云闪付签到结果',res.data.signedIn+res.data.days)
-      console.log(res.data)
+      result = res.data.signedIn ? '成功':'失败'
+      notify.sendNotify('云闪付签到结果','签到'+result+'\n'+'目前连续签到天数为：'+res.data.signInDays['days']+'\n'+'这个月连续签到天数：'+res.data.signInDays['current']['days'])
+      console.log('签到'+result+'\n'+'目前连续签到天数为：'+res.data.signInDays['days']+'\n'+'这个月连续签到天数：'+res.data.signInDays['current']['days'])
     })
     .catch((error) => {
       console.error(error)
