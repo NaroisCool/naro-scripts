@@ -9,6 +9,7 @@
 
 # 简介
 qq交流群：640169839
+TG交流群: https://t.me/naro_scripts
 
 # 快捷导航
 [云闪付签到](https://github.com/NaroisCool/naro-scripts/blob/master/云闪付.js)
