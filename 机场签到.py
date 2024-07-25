@@ -31,6 +31,8 @@ class BBXYSign:
       
     def check_websites_sync(self, websites):
         with httpx.Client(headers=self.headers) as client:
+            print(f"总共{len(websites)}个网站")
+            count = 1
             for site in websites:
                 try:
                     response = client.get(site)
@@ -38,17 +40,28 @@ class BBXYSign:
                         print(f"这个链接可以访问，暂定:{site}")
                         self.loginUrl = site + "auth/login"
                         self.originUrl = site
+                        #进行登录测试
                         flag = self.login()
                         if flag:
                             print(f"这个链接可以登录，锁定:{site}")
+                            count = count +1
+                            if count>len(websites):
+                                notify.send('BBXY签到结果！','所有网站登录测试失败，请重新运行一遍！') 
                             return site
                         else :
                             print(f'登录失败，尝试下一个链接')
+                            print('-----------------')
+                            count = count +1
+                            if count>len(websites):
+                                notify.send('BBXY签到结果！','所有网站登录测试失败，请重新运行一遍！')                           
                             continue
                 except httpx.RequestError as e:
                     print(f"这个链接不能用，避一避: {site} - {e}")
-                    # 在这里可以加入针对失败访问的站点的后续操作
-                    continue  # 尝试下一个站点
+                    print('-----------------')
+                    count = count +1
+                    if count>len(websites):
+                                notify.send('BBXY签到结果！','所有网站登录测试失败，请重新运行一遍！')                   
+                    continue
 
     '''
     登录
@@ -65,8 +78,7 @@ class BBXYSign:
             else:
                 print("登录成功")   
                 return True
-        except Exception as e:
-            print('-----------------')
+        except Exception as e:          
             print(e)
             return False
 
@@ -77,7 +89,6 @@ class BBXYSign:
     def sign(self):
         try:
             client = self.session.post(url=self.originUrl + "user/checkin", params=self.params, headers=self.headers)
-            print(client.text)
             response = json.loads(client.text)
             if response['ret'] != 1:
                 print(f"签到失败了，原因是{response['msg']}")
@@ -85,17 +96,16 @@ class BBXYSign:
                 return False
             self.signSuccessMsg = response
             self.signSuccessOrNot = True
-            msg = (f"签到成功\n总流量{self.signSuccessMsg['traffic']}\n"
+            #result = self.signSuccessMsg['msg'].decode('unicode_escape')
+            msg = (f"签到成功:{self.signSuccessMsg['msg']}\n总流量{self.signSuccessMsg['traffic']}\n"
                        f"今日已用{self.signSuccessMsg['trafficInfo'].get('todayUsedTraffic')}\n"
                        f"总共已用{self.signSuccessMsg['trafficInfo'].get('lastUsedTraffic')}\n"
                        f"剩余流量{self.signSuccessMsg['trafficInfo'].get('unUsedTraffic')}\n")
             if self.signSuccessOrNot:
                 notify.send('BBXY签到结果！',msg)
-                print("微信公众号消息已发送")
                 return True
             else:
                 notify.send('BBXY签到结果！',msg)
-                print("微信公众号消息已发送")
                 return False
             return True
         except Exception as e:
