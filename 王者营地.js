@@ -26,6 +26,7 @@ async function main(){
             const payload = JSON.parse(body[count])
             axios.post('https://kohcamp.qq.com/operation/action/signin',payload,{headers:header} )
             .then((res) => {
+                console.log(payload.roleId+'的王者营地签到结果'+JSON.stringify(res.data))
                 notify.sendNotify(payload.roleId+'的王者营地签到结果',JSON.stringify(res.data))
             }).catch((error) => {
                 console.error(error)
