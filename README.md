@@ -26,7 +26,7 @@ TG交流群: https://t.me/naro_scripts
 
 # 薅羊毛
 
-[高性价比机场](https://dash.bbxy.buzz/auth/register?code=G9we)
+高性价比机场:[百变小樱](https://dash.bbxy.buzz/auth/register?code=G9we) [飞兔云](https://xn--9kq10e0y7h.site/index.html?register=kPJ9Iusm)
 
 # 免责申明
 该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
