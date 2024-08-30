@@ -18,8 +18,7 @@ import notify
 class BBXYSign:
 
     def __init__(self):
-        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, "
-                                      "like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"}
+        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"}
         self.session = httpx.Client()
         self.originUrl = ""
         self.loginUrl = ""
@@ -38,7 +37,7 @@ class BBXYSign:
                     response = client.get(site)
                     if response.status_code == 200 :
                         print(f"这个链接可以访问，暂定:{site}")
-                        self.loginUrl = site + "auth/login"
+                        self.loginUrl = site + "/auth/login"
                         self.originUrl = site
                         #进行登录测试
                         flag = self.login()
@@ -88,7 +87,7 @@ class BBXYSign:
 
     def sign(self):
         try:
-            client = self.session.post(url=self.originUrl + "user/checkin", params=self.params, headers=self.headers)
+            client = self.session.post(url=self.originUrl + "/user/checkin", params=self.params, headers=self.headers)
             response = json.loads(client.text)
             if response['ret'] != 1:
                 print(f"签到失败了，原因是{response['msg']}")
