@@ -1,6 +1,8 @@
 /*
 cron: 0 0 9 * * *
 京东读书签到
+添加变量JDREAD
+抓包找到wskey=AAJn_cj******c2; 填入
 */
 const notify = require('./sendNotify')
 const axios = require('axios')
