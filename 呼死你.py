@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#验证码轰炸，短信轰炸，还在完善中，有些接口会过期，有些不会，欢迎投稿
 import json
 import re
 import time
