@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #验证码轰炸，电话轰炸，主要逻辑是去一些网贷平台进行手机请求验证码然后让业务员回电话给目标手机号，达到了一箭双雕的效果。
 #接口还在完善中，有些接口会过期，有些不会，后期持续更新。欢迎投稿
+#另外推荐一下另一个电话轰炸，逻辑和这个脚本一样，借刀杀人。 https://github.com/NaroisCool/SpamCall/tree/main
 import json
 import re
 import time
