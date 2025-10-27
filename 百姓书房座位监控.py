@@ -2,8 +2,9 @@
 
 import requests
 import notify
+import re
 #每天的sign不一样，且要一一对应。
-combine = [{'sign':'A864C49958A6F098546B20334124A4E0','date':'2025-10-26'},{'sign':'BA828EACB93C71EA2BAC9F03F9FB475E','date':'2025-10-27'}]
+combine = [{'sign':'83D2F2B9C439700ADBF6331D5FB30B01','date':'2025-10-29'},{'sign':'BA828EACB93C71EA2BAC9F03F9FB475E','date':'2025-10-27'}]
 for c in combine:
     headers = {
         'Host': 'api.yuxiusz.com',
@@ -29,7 +30,9 @@ for c in combine:
     data = response.json()
     try:
         for item in data['data']:
-            name = item['name'],   
+            name = item['name']
+            pattern = r'[^\w\s\u4e00-\u9fa5]'   
+            seat = re.sub(pattern,'',name)
             for detail in item['details']:
                 reservable_details = [
             {    
@@ -38,7 +41,7 @@ for c in combine:
                 'date': detail['date']
             }]
                 if detail['is_reservable']:
-                    notify.send(f"{name}有座位了！！", str(reservable_details[0]))
+                    notify.send(f"{reservable_details[0]['date']}的{seat}有座位了！！", str(reservable_details[0]))
                     print(reservable_details)
                 else:
                     print(reservable_details[0]['date']+'暂时没座位。')
