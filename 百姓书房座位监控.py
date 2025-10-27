@@ -4,13 +4,13 @@ import requests
 import notify
 import re
 #每天的sign不一样，且要一一对应。
-combine = [{'sign':'83D2F2B9C439700ADBF6331D5FB30B01','date':'2025-10-29'},{'sign':'BA828EACB93C71EA2BAC9F03F9FB475E','date':'2025-10-27'}]
+combine = [{'sign':'9F8D054C5CA8CC18C485842603F83177','date':'2025-10-28'},{'sign':'83D2F2B9C439700ADBF6331D5FB30B01','date':'2025-10-29'},{'sign':'044214497EBE5BC71A7CCE31E458B2A6','date':'2025-10-30'}]
 for c in combine:
     headers = {
         'Host': 'api.yuxiusz.com',
         'Connection': 'keep-alive',
         # 'Content-Length': '46',
-        'Token': 'TC1myo0TW6eEM4vA21sNuxb5XTGgz2edcKKsrZRfdp8/XuKpUVcfn942aDgaesA/bwVO34UP/CuqilVXCKI84wmfazW+DTAbO4s02zRKbB//R6ifvwPMdr1pGbOlxE11cyWhSiqdGJc1NpfkwXFkdSHGZAFfvO8UtrJuE0s2VFh5bcDDI2iZo49QwN3nWdLbmyu0XQt4KnqXwfXkdS9l27kD0PZ+3l+PcyBYaFEbsdlvESetKUtn8TbXXsqzNSZ0+NmNrnbsijP1q8IDkh3GcMZfxJrajo+ZUB7/t+O51D4qoodwsYcP589ZPZrhQze6ErqFDpLjbzDdp0kRgYzZlw==',
+        'Token': 'TC1myo0TW6eEM4vA21sNuxb5XTGgz2edcKKsrZRfdp8/XuKpUVcfn942aDgaesA/bwVO34UP/CuqilVXCKI84wmfazW+DTAbO4s02zRKbB//R6ifvwPMdr1pGbOlxE11Zc/pY4m3zCQ78N7BtSuFH+ZFBCoijYbevsrZtr7/8qONEVWlnsgxS0k47CMBVK8jmyu0XQt4KnqXwfXkdS9l27kD0PZ+3l+PcyBYaFEbsdlvESetKUtn8TbXXsqzNSZ0sqQWZjV33ef1NNk5nQ/kLHCfRFDF9PJ3ph8m4CCAaDHVsTqKnJ+5RVSJhpQGY6PldHdy98gEKjsLOtN8gJ6uiA==',
         'content-type': 'application/x-www-form-urlencoded',
         'instid': '2001',
         'Sign': c['sign'],
@@ -47,3 +47,4 @@ for c in combine:
                     print(reservable_details[0]['date']+'暂时没座位。')
     except:
         print('token有问题，请重新获取')
+        notify.send('百姓书房座位监控失败~','请检查Token和sign是否正确和有效。')
