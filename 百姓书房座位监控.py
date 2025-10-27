@@ -41,7 +41,7 @@ for c in combine:
                 'date': detail['date']
             }]
                 if detail['is_reservable']:
-                    notify.send(f"{reservable_details[0]['date']}的{seat}有座位了！！", str(reservable_details[0]))
+                    notify.send(f"{reservable_details[0]['date']}的{seat}有座位了！！", "时间段"+str(reservable_details[0]['time_slot']))
                     print(reservable_details)
                 else:
                     print(reservable_details[0]['date']+'暂时没座位。')
